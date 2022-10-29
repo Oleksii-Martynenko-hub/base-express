@@ -8,7 +8,7 @@ const authRoutes = require('./routes/auth');
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors({
   origin: ['http://localhost:3000', 'https://dev-photodrop-client.vercel.app']
 }));

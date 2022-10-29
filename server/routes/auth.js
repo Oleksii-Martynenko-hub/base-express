@@ -4,7 +4,7 @@ const authControllers = require('../controllers/auth');
 
 const router = express.Router();
 
-router.post('/send-otp', authControllers.sendOtp);
+router.get('/get-origin', authControllers.getOrigin);
 
 router.post('/login', authControllers.login);
 
