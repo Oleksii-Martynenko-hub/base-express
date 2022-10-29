@@ -1,19 +1,24 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
-const usersRoutes = require('./routes/users');
 const authRoutes = require('./routes/auth');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cors({
   origin: ['http://localhost:3000', 'https://dev-photodrop-client.vercel.app']
 }));
-app.use('/', usersRoutes);
-app.use('/', authRoutes);
+app.use(cookieParser());
+
+app.use(authRoutes);
 app.use((req, res, next) => res.status(404).send(['page not found']));
 
-module.exports = app;
+const start = async () => {
+  try {
+    app.listen(4000, () => console.log(`Server started on ${4000}`));
+  } catch (e) {console.log(e);}
+}
+
+start();
