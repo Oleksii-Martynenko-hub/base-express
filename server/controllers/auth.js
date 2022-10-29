@@ -2,8 +2,8 @@ const bcrypt = require('bcryptjs');
 
 
 exports.sendOtp = (req, res, next) => {
-  const headers = req.headers;
-  console.log("🚀 ~ headers", headers);
+  const {origin, referer} = req.headers;
+  return res.send({origin, referer})
 };
 
 exports.login = (req, res, next) => {
